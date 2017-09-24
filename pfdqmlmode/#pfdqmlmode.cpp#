@@ -1,0 +1,53 @@
+#include "pfdqmlmode.h"
+#include "quickwidgetproxy.h"
+#include "svgimageprovider.h"
+
+#include <QDesktopServices>
+
+#include <QtCore/QSettings>
+#include <QtCore/QUrl>
+#include <QtCore/QDebug>
+
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+
+#include <QtQuick>
+#include <QQuickWidget>
+#include <QQmlEngine>
+#include <QQmlContext>
+
+#include <cstdlib>
+
+PfdQmlMode::PfdQmlMode(QString name) :
+  _qmlName(name)
+{
+  _quickWidgetProxy = new QuickWidgetProxy();
+  QUrl url = QUrl::fromLocalFile(_qmlName);
+  _quickWidgetProxy->setSource(url);
+  _svgProvider = new SvgImageProvider(_qmlName);
+  _quickWidgetProxy->engine()->addImageProvider("svg", _svgProvider);
+  _quickWidgetProxy->engine()->rootContext()->setContextProperty("svgRenderer", _svgProvider);
+}
+
+PfdQmlMode::~PfdQmlMode()
+{
+  delete _svgProvider;
+  delete _quickWidgetProxy;
+}
+
+QString PfdQmlMode::name() const
+{
+  return tr("PfdQml");
+}
+
+QIcon PfdQmlMode::icon() const
+{
+  return QIcon(QLatin1String(":/images/librepiloticon.png"));
+}
+
+
+QWidget *PfdQmlMode::widget()
+{
+  return _quickWidgetProxy->widget();
+}
+

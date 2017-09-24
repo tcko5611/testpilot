@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/librepiloticon.png</file>
+        <file>qml/Cube.qml</file>
+        <file>qml/Earth.qml</file>
+        <file>qml/Model.qml</file>
+        <file>qml/ModelTerrain.qml</file>
+        <file>qml/Pfd.qml</file>
+        <file>qml/PfdTerrain.qml</file>
+        <file>qml/pfd/AltitudeScale.qml</file>
+        <file>qml/pfd/Compass.qml</file>
+        <file>qml/pfd/HorizontCenter.qml</file>
+        <file>qml/pfd/Info.qml</file>
+        <file>qml/pfd/Panels.qml</file>
+        <file>qml/pfd/pfd.svg</file>
+        <file>qml/pfd/PfdSimpleWorld.qml</file>
+        <file>qml/pfd/PfdTerrainWorld.qml</file>
+        <file>qml/pfd/PfdView.qml</file>
+        <file>qml/pfd/RollScale.qml</file>
+        <file>qml/pfd/SpeedScale.qml</file>
+        <file>qml/pfd/SvgElementImage.qml</file>
+        <file>qml/pfd/SvgElementPositionItem.qml</file>
+        <file>qml/pfd/TooltipArea.qml</file>
+        <file>qml/pfd/VsiScale.qml</file>
+        <file>qml/pfd/Warnings.qml</file>
+        <file>qml/model/ModelTerrainView.qml</file>
+        <file>qml/model/ModelView.qml</file>
+        <file>qml/js/common.js</file>
+        <file>qml/js/uav.js</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/librepilot_logo_128.png</file>
+    </qresource>
+</RCC>
