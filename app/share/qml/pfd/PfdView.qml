@@ -59,12 +59,12 @@ Rectangle {
             anchors.centerIn: parent
             clip: true
 
-            // Loader {
-            //    id: worldLoader
-            //    anchors.fill: parent
-            //    focus: true
-            //    source: worldFile
-            // }
+            Loader {
+                id: worldLoader
+                anchors.fill: parent
+                focus: true
+                source: worldFile
+            }
 
             HorizontCenter {
                 id: horizontCenterItem

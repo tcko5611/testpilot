@@ -1,9 +1,10 @@
 #include "mainwindow.h"
 #include "connectionmanager.h"
-#include "welcomemode.h"
-#include "pfdqmlcontext.h"
-#include "pfdqmlmode.h"
+#include "quickwidgetproxy.h"
+#include "modelqmlcontext.h"
 #include "osgearth.h"
+#include "welcomemode.h"
+#include "svgimageprovider.h"
 #include <iostream>
 #include <QFileInfo>
 #include <qstylefactory.h>
@@ -43,7 +44,7 @@ MainWindow::MainWindow() :
 
   createActions();
   createMenus();
-
+ 
   tabWidget = new QTabWidget(this);
   tabWidget->setIconSize(QSize(24, 24));
   tabWidget->setTabPosition(QTabWidget::South);
@@ -53,31 +54,16 @@ MainWindow::MainWindow() :
 
   connectionManager = new ConnectionManager(this);
   tabWidget->setCornerWidget(connectionManager, Qt::TopRightCorner);
+  // create welcome mode
   welcomeMode = new WelcomeMode();
   tabWidget->addTab(welcomeMode->widget(), welcomeMode->icon(), welcomeMode->name());
+  // create pfd mode
+  createPfdQmlWidget();
+  tabWidget->addTab(pfdQmlWidget->widget(), welcomeMode->icon(), "Pfd");
+  //create model mode 
   OsgEarth::registerQmlTypes();
-  QString fn = QString("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/share/qml/Pfd.qml");
-  QFileInfo check_file(fn);
-  if (check_file.exists() && check_file.isFile()) {
-    std::cout << check_file.canonicalPath().toStdString() << std::endl;
-  } else {
-    std::cout << "file not exist" << std::endl;
-  }
-  pfdQmlMode = new PfdQmlMode(check_file.canonicalFilePath());
-  pfdQmlMode->setSource();
-  tabWidget->addTab(pfdQmlMode->widget(), pfdQmlMode->icon(), pfdQmlMode->name());
-  fn = QString("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/share/qml/Model.qml");
-  check_file = QFileInfo(fn);
-  if (check_file.exists() && check_file.isFile()) {
-    std::cout << check_file.canonicalPath().toStdString() << std::endl;
-  } else {
-    std::cout << "file not exist" << std::endl;
-  }
-  modelQmlMode = new PfdQmlMode(check_file.canonicalFilePath());
-  PfdQmlContext *modelQmlContext = new PfdQmlContext(this);
-  modelQmlMode->setContextProperty("pfdContext", modelQmlContext);
-  modelQmlMode->setSource();
-  tabWidget->addTab(modelQmlMode->widget(), modelQmlMode->icon(), modelQmlMode->name());
+  createModelQmlWidget();
+  tabWidget->addTab(modelQmlWidget->widget(), welcomeMode->icon(), "Model");
   setCentralWidget(tabWidget);
 }
 
@@ -85,7 +71,46 @@ MainWindow::~MainWindow()
 {
 }
 
+void MainWindow::createPfdQmlWidget()
+{
+  QString fN("./share/qml/Pfd.qml");
+  QFileInfo check_file(fN);
+  if (check_file.isFile()) {
+    qDebug() << fN << " is a file";
+    fN = check_file.absoluteFilePath();
+  } else {
+    qDebug() << fN << " is not a file";
+    return;
+  }
+  pfdQmlWidget = new QuickWidgetProxy();
+  SvgImageProvider *svgProvider = new SvgImageProvider(fN);
+  pfdQmlWidget->addImageProvider("svg", svgProvider);
+  pfdQmlWidget->setEngineContextProperty("svgRenderer", svgProvider);
+  QUrl url = QUrl::fromLocalFile(fN);
+  pfdQmlWidget->setSource(url);
+  pfdQmlWidget->setBaseUrl(url);
+}
 
+void MainWindow::createModelQmlWidget()
+{
+  modelQmlWidget = new QuickWidgetProxy();
+  ModelQmlContext *modelQmlContext = new ModelQmlContext();
+  modelQmlContext->setBackgroundImageFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/backgrounds/default_background.png");
+  modelQmlContext->setModelFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/models/multi/test_quad/test_quad_x.3ds");
+  modelQmlWidget->setContextProperty("pfdContext", modelQmlContext);
+
+  QString fN("./share/qml/Model.qml");
+  QFileInfo check_file(fN);
+  if (check_file.isFile()) {
+    qDebug() << fN << " is a file";
+  } else {
+    qDebug() << fN << " is not a file";
+  }
+  fN = check_file.absoluteFilePath();
+  QUrl url = QUrl::fromLocalFile(fN);
+  modelQmlWidget->setSource(url);
+  modelQmlWidget->setBaseUrl(url);
+}
 
 void MainWindow::createActions()
 {

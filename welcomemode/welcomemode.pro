@@ -1,5 +1,8 @@
 QT       += core widgets quickwidgets
 
+QMAKE_CC = ccache $$QMAKE_CC
+QMAKE_CXX = ccache $$QMAKE_CXX
+
 TARGET = welcomemode
 TEMPLATE = lib
 

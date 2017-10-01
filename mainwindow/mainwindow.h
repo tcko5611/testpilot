@@ -12,7 +12,8 @@ class QShortcut;
 class QToolButton;
 class ConnectionManager;
 class WelcomeMode;
-class PfdQmlMode;
+class QuickWidgetProxy;
+
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
@@ -20,6 +21,9 @@ class MainWindow : public QMainWindow {
   MainWindow();
   ~MainWindow();
 
+ private:
+  void createPfdQmlWidget();
+  void createModelQmlWidget();
  private slots:
     // actions
     void saveGcsDefaultSettings()
@@ -188,8 +192,8 @@ class MainWindow : public QMainWindow {
     ConnectionManager *connectionManager;
     QTabWidget *tabWidget;
     WelcomeMode *welcomeMode;
-    PfdQmlMode *pfdQmlMode;
-    PfdQmlMode *modelQmlMode;
+    QuickWidgetProxy *pfdQmlWidget;
+    QuickWidgetProxy *modelQmlWidget;
 };
 
 #endif // MAINWINDOW_H

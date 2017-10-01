@@ -5,26 +5,6 @@
 #include <QQmlContext>
 #include <QDebug>
 
-/*
- * Note: QQuickWidget is an alternative to using QQuickView and
- * QWidget::createWindowContainer().  The restrictions on stacking
- * order do not apply, making QQuickWidget the more flexible
- * alternative, behaving more like an ordinary widget. This comes at
- * the expense of performance.  Unlike QQuickWindow and QQuickView,
- * QQuickWidget involves rendering into OpenGL framebuffer objects.
- * This will naturally carry a minor performance hit.
- *
- * Note: Using QQuickWidget disables the threaded render loop on all
- * platforms.  This means that some of the benefits of threaded
- * rendering, for example Animator classes and vsync driven
- * animations, will not be available.
- *
- * Note: Avoid calling winId() on a QQuickWidget. This function
- * triggers the creation of a native window, resulting in reduced
- * performance and possibly rendering glitches.  The entire purpose of
- * QQuickWidget is to render Quick scenes without a separate native
- * window, hence making it a native widget should always be avoided.
- */
 QuickWidgetProxy::QuickWidgetProxy(QWidget *parent) : QObject(parent)
 {
   quickWidget = new QQuickWidget(parent);
@@ -39,6 +19,25 @@ QuickWidgetProxy::QuickWidgetProxy(QWidget *parent) : QObject(parent)
 QuickWidgetProxy::~QuickWidgetProxy()
 {
   delete quickWidget;
+}
+
+QString QuickWidgetProxy::name() const
+{
+  return _name;
+}
+
+QIcon QuickWidgetProxy::icon() const
+{
+  return _icon;
+}
+
+void QuickWidgetProxy::setIcon(const QString &fn)
+{
+  _icon = QIcon(fn);
+}
+void QuickWidgetProxy::setName(const QString &name)
+{
+  _name = name;
 }
 
 QWidget *QuickWidgetProxy::widget()
@@ -56,6 +55,11 @@ void QuickWidgetProxy::setSource(const QUrl &url)
   quickWidget->setSource(url);
 }
 
+void QuickWidgetProxy::setBaseUrl(const QUrl &url)
+{
+  engine()->setBaseUrl(url);
+}
+
 QList<QQmlError> QuickWidgetProxy::errors() const
 {
   return quickWidget->errors();
@@ -64,6 +68,11 @@ QList<QQmlError> QuickWidgetProxy::errors() const
 void QuickWidgetProxy::setContextProperty(const QString &name, QObject *value)
 {
   quickWidget->rootContext()->setContextProperty(name, value); 
+}
+
+void QuickWidgetProxy::setEngineContextProperty(const QString &name, QObject *value)
+{
+  engine()->rootContext()->setContextProperty(name, value); 
 }
 
 void QuickWidgetProxy::addImageProvider(const QString &providerId, QQmlImageProviderBase *provider)

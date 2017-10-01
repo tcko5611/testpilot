@@ -1,5 +1,8 @@
 QT       += core quickwidgets widgets qml svg
 
+QMAKE_CC = ccache $$QMAKE_CC
+QMAKE_CXX = ccache $$QMAKE_CXX
+
 TARGET = svgimageprovider
 TEMPLATE = lib
 

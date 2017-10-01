@@ -1,15 +1,11 @@
-#ifndef PFDQMLCONTEXT_H_
-#define PFDQMLCONTEXT_H_
-#if 0
-#include "pfdqml.h"
-#include "pfdqmlgadgetconfiguration.h"
-#endif
+#ifndef MODELQMLCONTEXT_H_
+#define MODELQMLCONTEXT_H_
 #include <QObject>
 #include <QDateTime>
 class QQmlContext;
 class QSettings;
 
-class PfdQmlContext : public QObject {
+class ModelQmlContext : public QObject {
     Q_OBJECT Q_PROPERTY(QString speedUnit READ speedUnit WRITE setSpeedUnit NOTIFY speedUnitChanged)
     Q_PROPERTY(double speedFactor READ speedFactor WRITE setSpeedFactor NOTIFY speedFactorChanged)
     Q_PROPERTY(QString altitudeUnit READ altitudeUnit WRITE setAltitudeUnit NOTIFY altitudeUnitChanged)
@@ -34,8 +30,8 @@ class PfdQmlContext : public QObject {
     Q_PROPERTY(QString backgroundImageFile READ backgroundImageFile WRITE setBackgroundImageFile NOTIFY backgroundImageFileChanged)
 
 public:
-    PfdQmlContext(QObject *parent = 0);
-    virtual ~PfdQmlContext();
+    ModelQmlContext(QObject *parent = 0);
+    virtual ~ModelQmlContext();
 
     QString speedUnit() const;
     void setSpeedUnit(QString unit);
@@ -127,4 +123,4 @@ private:
 
     void addModelDir(QString dir);
 };
-#endif /* PFDQMLCONTEXT_H_ */
+#endif /* MODELQMLCONTEXT_H_ */

@@ -5,7 +5,7 @@ SUBDIRS = \
   svgimageprovider \
   quickwidgetproxy \
   connectionmanager \
-  pfdqmlmode\
+  modelqmlcontext \
   welcomemode \
   mainwindow \
   app
