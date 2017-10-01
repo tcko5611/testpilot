@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS = \
   osgearth \
+  uavobjects \
   svgimageprovider \
   quickwidgetproxy \
   connectionmanager \

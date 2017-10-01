@@ -62,3 +62,10 @@ else:unix: LIBS += -L$$OUT_PWD/../modelqmlcontext/ -lmodelqmlcontext
 
 INCLUDEPATH += $$PWD/../modelqmlcontext
 DEPENDPATH += $$PWD/../modelqmlcontext
+
+win32:CONFIG(release, debug|release): LIBS += -L$$OUT_PWD/../uavobjects/release/ -luavobjects
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$OUT_PWD/../uavobjects/debug/ -luavobjects
+else:unix: LIBS += -L$$OUT_PWD/../uavobjects/ -luavobjects
+
+INCLUDEPATH += $$PWD/../uavobjects
+DEPENDPATH += $$PWD/../uavobjects

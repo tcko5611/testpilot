@@ -3,16 +3,16 @@ QT       += core quickwidgets widgets qml
 QMAKE_CC = ccache $$QMAKE_CC
 QMAKE_CXX = ccache $$QMAKE_CXX
 
-TARGET = quickwidgetproxy
+TARGET = uavobjects
 TEMPLATE = lib
 
 SOURCES += \
-    quickwidgetproxy.cpp 
+    attitudestate.cpp 
 
 HEADERS += \
-    quickwidgetproxy.h
+    attitudestate.h
 
-copydata.commands = $(COPY_DIR) $$OUT_PWD/debug/quickwidgetproxy.dll $$OUT_PWD/../app/debug
+copydata.commands = $(COPY_DIR) $$OUT_PWD/debug/uavobjects.dll $$OUT_PWD/../app/debug
 first.depends = $(first) copydata
 export(first.depends)
 export(copydata.commands)

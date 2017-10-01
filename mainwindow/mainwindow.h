@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QTabWidget>
 #include <QDebug>
+#include <QRunnable>
 
 class QSettings;
 class QShortcut;
@@ -13,19 +14,29 @@ class QToolButton;
 class ConnectionManager;
 class WelcomeMode;
 class QuickWidgetProxy;
-
+class AttitudeState;
+class QLabel;
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
  public:
   MainWindow();
   ~MainWindow();
-
+  class VaryPitch : public QRunnable {
+  public:
+    VaryPitch (MainWindow *w) {
+      mainWindow = w;
+    }
+    void run();
+  private:
+    MainWindow *mainWindow;
+  };
  private:
   void createPfdQmlWidget();
   void createModelQmlWidget();
  private slots:
-    // actions
+   void handleButton();
+   // actions
     void saveGcsDefaultSettings()
     {
       qDebug() << "saveGcsDefaultSettings";
@@ -194,6 +205,10 @@ class MainWindow : public QMainWindow {
     WelcomeMode *welcomeMode;
     QuickWidgetProxy *pfdQmlWidget;
     QuickWidgetProxy *modelQmlWidget;
+    AttitudeState *attitudeState;
+    QLabel *pitchLabel;
+    QLabel *rollLabel;
+    QLabel *yawLabel;
 };
 
 #endif // MAINWINDOW_H

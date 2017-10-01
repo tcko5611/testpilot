@@ -5,6 +5,7 @@
 #include "osgearth.h"
 #include "welcomemode.h"
 #include "svgimageprovider.h"
+#include "attitudestate.h"
 #include <iostream>
 #include <QFileInfo>
 #include <qstylefactory.h>
@@ -29,10 +30,15 @@
 #include <QElapsedTimer>
 #include <QDir>
 #include <QMimeData>
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QThreadPool>
 
 MainWindow::MainWindow() :
     QMainWindow()
 {
+  attitudeState = new AttitudeState();
   setWindowTitle(QLatin1String("TestPilot") + " " + "1.0");
   qApp->setWindowIcon(QIcon(":/images/librepilot_logo_128.png"));
   qApp->setStyle(QStyleFactory::create("Fusion"));
@@ -57,18 +63,58 @@ MainWindow::MainWindow() :
   // create welcome mode
   welcomeMode = new WelcomeMode();
   tabWidget->addTab(welcomeMode->widget(), welcomeMode->icon(), welcomeMode->name());
+  /*
   // create pfd mode
   createPfdQmlWidget();
   tabWidget->addTab(pfdQmlWidget->widget(), welcomeMode->icon(), "Pfd");
+  */
   //create model mode 
   OsgEarth::registerQmlTypes();
   createModelQmlWidget();
   tabWidget->addTab(modelQmlWidget->widget(), welcomeMode->icon(), "Model");
-  setCentralWidget(tabWidget);
+
+  QPushButton *attitudeButton = new QPushButton("attitude", this);
+  connect(attitudeButton, SIGNAL (released()), this, SLOT (handleButton()));
+  pitchLabel = new QLabel();
+  rollLabel = new QLabel();
+  yawLabel = new QLabel();
+  pitchLabel->setText("0");
+  rollLabel->setText("0");
+  yawLabel->setText("0");
+  QHBoxLayout *hboxLayout = new QHBoxLayout();
+  hboxLayout->addWidget(attitudeButton);
+  hboxLayout->addWidget(pitchLabel);
+  hboxLayout->addWidget(rollLabel);
+  hboxLayout->addWidget(yawLabel);
+  
+  QVBoxLayout *vboxLayout = new QVBoxLayout();
+  vboxLayout->addWidget(tabWidget);
+  vboxLayout->addLayout(hboxLayout);
+  QWidget *widget = new QWidget(this);
+  widget->setLayout(vboxLayout);
+  setCentralWidget(widget);
 }
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::VaryPitch::run() {
+  for(int i = 0; i < 360; ++i) {
+      qDebug() << "i: " << i;
+    mainWindow->attitudeState->setPitch(i);
+    mainWindow->pitchLabel->setText(QString::number(i));
+    QThread::msleep(100);
+  }
+}
+
+void MainWindow::handleButton()
+{
+    qDebug() << "start handlebutton";
+  QThreadPool *threadPool = QThreadPool::globalInstance();
+  VaryPitch *varyPitch = new VaryPitch(this);
+  varyPitch->setAutoDelete(true);
+  threadPool->start(varyPitch);
 }
 
 void MainWindow::createPfdQmlWidget()
@@ -98,7 +144,7 @@ void MainWindow::createModelQmlWidget()
   modelQmlContext->setBackgroundImageFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/backgrounds/default_background.png");
   modelQmlContext->setModelFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/models/multi/test_quad/test_quad_x.3ds");
   modelQmlWidget->setContextProperty("pfdContext", modelQmlContext);
-
+  modelQmlWidget->setContextProperty("attitudeState", attitudeState);
   QString fN("./share/qml/Model.qml");
   QFileInfo check_file(fN);
   if (check_file.isFile()) {
