@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "connectionmanager.h"
-#include "quickwidgetproxy.h"
 #include "modelqmlcontext.h"
+#include "quickwidgetproxy.h"
 #include "osgearth.h"
 #include "welcomemode.h"
 #include "svgimageprovider.h"
@@ -63,11 +63,11 @@ MainWindow::MainWindow() :
   // create welcome mode
   welcomeMode = new WelcomeMode();
   tabWidget->addTab(welcomeMode->widget(), welcomeMode->icon(), welcomeMode->name());
-  /*
+  
   // create pfd mode
   createPfdQmlWidget();
   tabWidget->addTab(pfdQmlWidget->widget(), welcomeMode->icon(), "Pfd");
-  */
+  
   //create model mode 
   OsgEarth::registerQmlTypes();
   createModelQmlWidget();
@@ -132,6 +132,8 @@ void MainWindow::createPfdQmlWidget()
   SvgImageProvider *svgProvider = new SvgImageProvider(fN);
   pfdQmlWidget->addImageProvider("svg", svgProvider);
   pfdQmlWidget->setEngineContextProperty("svgRenderer", svgProvider);
+  pfdQmlWidget->setContextProperty("attitudeState", attitudeState);
+
   QUrl url = QUrl::fromLocalFile(fN);
   pfdQmlWidget->setSource(url);
   pfdQmlWidget->setBaseUrl(url);
@@ -141,19 +143,24 @@ void MainWindow::createModelQmlWidget()
 {
   modelQmlWidget = new QuickWidgetProxy();
   ModelQmlContext *modelQmlContext = new ModelQmlContext();
-  modelQmlContext->setBackgroundImageFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/backgrounds/default_background.png");
-  modelQmlContext->setModelFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/models/multi/test_quad/test_quad_x.3ds");
+  
+  QFileInfo check_file("./share/backgrounds/default_background.png");
+  //modelQmlContext->setBackgroundImageFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/backgrounds/default_background.png");
+  modelQmlContext->setBackgroundImageFile(check_file.absoluteFilePath());
+  check_file.setFile("./share/models/multi/test_quad/test_quad_x.3ds");
+  // modelQmlContext->setModelFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/models/multi/test_quad/test_quad_x.3ds");
+  modelQmlContext->setModelFile(check_file.absoluteFilePath());
   modelQmlWidget->setContextProperty("pfdContext", modelQmlContext);
   modelQmlWidget->setContextProperty("attitudeState", attitudeState);
-  QString fN("./share/qml/Model.qml");
-  QFileInfo check_file(fN);
+  // QString fN("./share/qml/Model.qml");
+  check_file.setFile("./share/qml/Model.qml");
   if (check_file.isFile()) {
-    qDebug() << fN << " is a file";
+    qDebug() << " is a file";
   } else {
-    qDebug() << fN << " is not a file";
+    qDebug() << " is not a file";
   }
-  fN = check_file.absoluteFilePath();
-  QUrl url = QUrl::fromLocalFile(fN);
+  // fN = check_file.absoluteFilePath();
+  QUrl url = QUrl::fromLocalFile(check_file.absoluteFilePath());
   modelQmlWidget->setSource(url);
   modelQmlWidget->setBaseUrl(url);
 }
