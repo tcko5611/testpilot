@@ -14,7 +14,7 @@ class QToolButton;
 class ConnectionManager;
 class WelcomeMode;
 class QuickWidgetProxy;
-class AttitudeState;
+class AttitudeState1;
 class QLabel;
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -205,7 +205,7 @@ class MainWindow : public QMainWindow {
     WelcomeMode *welcomeMode;
     QuickWidgetProxy *pfdQmlWidget;
     QuickWidgetProxy *modelQmlWidget;
-    AttitudeState *attitudeState;
+    AttitudeState1 *attitudeState1;
     QLabel *pitchLabel;
     QLabel *rollLabel;
     QLabel *yawLabel;

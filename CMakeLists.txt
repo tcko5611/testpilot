@@ -8,6 +8,7 @@ set(CMAKE_AUTORCC ON)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(testPilotFunctions)
 
+add_subdirectory(uavobjgenerator)
 add_subdirectory(connectionmanager)
 add_subdirectory(modelqmlcontext)
 add_subdirectory(quickwidgetproxy)

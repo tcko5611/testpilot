@@ -5,7 +5,7 @@
 #include "osgearth.h"
 #include "welcomemode.h"
 #include "svgimageprovider.h"
-#include "attitudestate.h"
+#include "attitudestate1.h"
 #include <iostream>
 #include <QFileInfo>
 #include <qstylefactory.h>
@@ -38,7 +38,7 @@
 MainWindow::MainWindow() :
     QMainWindow()
 {
-  attitudeState = new AttitudeState();
+  attitudeState1 = new AttitudeState1();
   setWindowTitle(QLatin1String("TestPilot") + " " + "1.0");
   qApp->setWindowIcon(QIcon(":/images/librepilot_logo_128.png"));
   qApp->setStyle(QStyleFactory::create("Fusion"));
@@ -102,7 +102,7 @@ MainWindow::~MainWindow()
 void MainWindow::VaryPitch::run() {
   for(int i = 0; i < 360; ++i) {
       qDebug() << "i: " << i;
-    mainWindow->attitudeState->setPitch(i);
+    mainWindow->attitudeState1->setPitch(i);
     mainWindow->pitchLabel->setText(QString::number(i));
     QThread::msleep(100);
   }
@@ -132,7 +132,7 @@ void MainWindow::createPfdQmlWidget()
   SvgImageProvider *svgProvider = new SvgImageProvider(fN);
   pfdQmlWidget->addImageProvider("svg", svgProvider);
   pfdQmlWidget->setEngineContextProperty("svgRenderer", svgProvider);
-  pfdQmlWidget->setContextProperty("attitudeState", attitudeState);
+  pfdQmlWidget->setContextProperty("attitudeState", attitudeState1);
 
   QUrl url = QUrl::fromLocalFile(fN);
   pfdQmlWidget->setSource(url);
@@ -151,7 +151,7 @@ void MainWindow::createModelQmlWidget()
   // modelQmlContext->setModelFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/models/multi/test_quad/test_quad_x.3ds");
   modelQmlContext->setModelFile(check_file.absoluteFilePath());
   modelQmlWidget->setContextProperty("pfdContext", modelQmlContext);
-  modelQmlWidget->setContextProperty("attitudeState", attitudeState);
+  modelQmlWidget->setContextProperty("attitudeState", attitudeState1);
   // QString fN("./share/qml/Model.qml");
   check_file.setFile("./share/qml/Model.qml");
   if (check_file.isFile()) {

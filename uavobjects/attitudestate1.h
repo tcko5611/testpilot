@@ -1,9 +1,9 @@
-#ifndef ATTITUDESTATE_H
-#define ATTITUDESTATE_H
+#ifndef ATTITUDESTATE1_H
+#define ATTITUDESTATE1_H
 #include <QObject>
 class QMutex;
 
-class AttitudeStateConstants : public QObject {
+class AttitudeState1Constants : public QObject {
   Q_OBJECT
 public:
   enum Enum {  };
@@ -12,7 +12,7 @@ public:
 
 
 
-class AttitudeState : public QObject
+class AttitudeState1 : public QObject
 {
   Q_OBJECT
   Q_PROPERTY(float q1 READ q1 WRITE setQ1 NOTIFY q1Changed)
@@ -47,7 +47,7 @@ class AttitudeState : public QObject
   static const quint32 NUMBYTES = sizeof(DataFields);
   
   // Functions
-  AttitudeState();
+  AttitudeState1();
   
   DataFields getData();
   void setData(const DataFields& data, bool emitUpdateEvents = true);
@@ -92,7 +92,7 @@ class AttitudeState : public QObject
   QMutex *mutex;
 };
 
-#endif // ATTITUDESTATE_H
+#endif // ATTITUDESTATE1_H
 // Local Variables:
 // mode: c++
 // End:

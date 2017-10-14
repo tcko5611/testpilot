@@ -1,7 +1,7 @@
 /**
  ******************************************************************************
  *
- * @file       attitudestate.cpp
+ * @file       attitudestate1.cpp
  * @author     The OpenPilot Team, http://www.openpilot.org Copyright (C) 2010.
  * @see        The GNU Public License (GPL) Version 3
  * @addtogroup GCSPlugins GCS Plugins
@@ -9,7 +9,7 @@
  * @addtogroup UAVObjectsPlugin UAVObjects Plugin
  * @{
  *
- * @note       Object definition file: attitudestate.xml.
+ * @note       Object definition file: attitudestate1.xml.
  *             This is an automatically generated file.
  *             DO NOT modify manually.
  *
@@ -31,18 +31,18 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "attitudestate.h"
+#include "attitudestate1.h"
 
 #include <QtQml>
 #include <QMutex>
-const QString AttitudeState::NAME = QString("AttitudeState");
-const QString AttitudeState::DESCRIPTION = QString("The updated Attitude estimation from @ref StateEstimationModule.");
-const QString AttitudeState::CATEGORY = QString("State");
+const QString AttitudeState1::NAME = QString("AttitudeState1");
+const QString AttitudeState1::DESCRIPTION = QString("The updated Attitude estimation from @ref StateEstimationModule.");
+const QString AttitudeState1::CATEGORY = QString("State");
 
 /**
  * Constructor
  */
-AttitudeState::AttitudeState()
+AttitudeState1::AttitudeState1()
 {
     mutex = new QMutex(QMutex::Recursive);
 }
@@ -51,7 +51,7 @@ AttitudeState::AttitudeState()
 /**
  * Get the object data fields
  */
-AttitudeState::DataFields AttitudeState::getData()
+AttitudeState1::DataFields AttitudeState1::getData()
 {
     QMutexLocker locker(mutex);
     return data_;
@@ -60,7 +60,7 @@ AttitudeState::DataFields AttitudeState::getData()
 /**
  * Set the object data fields and (optionaly) emit object update events
  */
-void AttitudeState::setData(const DataFields& data, bool emitUpdateEvents)
+void AttitudeState1::setData(const DataFields& data, bool emitUpdateEvents)
 {
     QMutexLocker locker(mutex);
     // Get metadata
@@ -70,7 +70,7 @@ void AttitudeState::setData(const DataFields& data, bool emitUpdateEvents)
     }
 }
 
-void AttitudeState::emitNotifications()
+void AttitudeState1::emitNotifications()
 {
     emit q1Changed(q1());
     emit q2Changed(q2());
@@ -85,18 +85,18 @@ void AttitudeState::emitNotifications()
 /**
  * Static function to register QML types.
  */
-void AttitudeState::registerQMLTypes() {
-    qmlRegisterType<AttitudeState>("UAVTalk.AttitudeState", 1, 0, "AttitudeState");
-    qmlRegisterType<AttitudeStateConstants>("UAVTalk.AttitudeState", 1, 0, "AttitudeStateConstants");
+void AttitudeState1::registerQMLTypes() {
+    qmlRegisterType<AttitudeState1>("UAVTalk.AttitudeState1", 1, 0, "AttitudeState1");
+    qmlRegisterType<AttitudeState1Constants>("UAVTalk.AttitudeState1", 1, 0, "AttitudeState1Constants");
 
 }
 
-float AttitudeState::q1() const
+float AttitudeState1::q1() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.q1);
 }
-void AttitudeState::setQ1(const float value)
+void AttitudeState1::setQ1(const float value)
 {
    mutex->lock();
    bool changed = (data_.q1 != static_cast<float>(value));
@@ -105,12 +105,12 @@ void AttitudeState::setQ1(const float value)
    if (changed) { emit q1Changed(value); }
 }
 
-float AttitudeState::q2() const
+float AttitudeState1::q2() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.q2);
 }
-void AttitudeState::setQ2(const float value)
+void AttitudeState1::setQ2(const float value)
 {
    mutex->lock();
    bool changed = (data_.q2 != static_cast<float>(value));
@@ -119,12 +119,12 @@ void AttitudeState::setQ2(const float value)
    if (changed) { emit q2Changed(value); }
 }
 
-float AttitudeState::q3() const
+float AttitudeState1::q3() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.q3);
 }
-void AttitudeState::setQ3(const float value)
+void AttitudeState1::setQ3(const float value)
 {
    mutex->lock();
    bool changed = (data_.q3 != static_cast<float>(value));
@@ -133,12 +133,12 @@ void AttitudeState::setQ3(const float value)
    if (changed) { emit q3Changed(value); }
 }
 
-float AttitudeState::q4() const
+float AttitudeState1::q4() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.q4);
 }
-void AttitudeState::setQ4(const float value)
+void AttitudeState1::setQ4(const float value)
 {
    mutex->lock();
    bool changed = (data_.q4 != static_cast<float>(value));
@@ -147,12 +147,12 @@ void AttitudeState::setQ4(const float value)
    if (changed) { emit q4Changed(value); }
 }
 
-float AttitudeState::roll() const
+float AttitudeState1::roll() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.Roll);
 }
-void AttitudeState::setRoll(const float value)
+void AttitudeState1::setRoll(const float value)
 {
    mutex->lock();
    bool changed = (data_.Roll != static_cast<float>(value));
@@ -161,12 +161,12 @@ void AttitudeState::setRoll(const float value)
    if (changed) { emit rollChanged(value); }
 }
 
-float AttitudeState::pitch() const
+float AttitudeState1::pitch() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.Pitch);
 }
-void AttitudeState::setPitch(const float value)
+void AttitudeState1::setPitch(const float value)
 {
    mutex->lock();
    bool changed = (data_.Pitch != static_cast<float>(value));
@@ -175,12 +175,12 @@ void AttitudeState::setPitch(const float value)
    if (changed) { emit pitchChanged(value); }
 }
 
-float AttitudeState::yaw() const
+float AttitudeState1::yaw() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.Yaw);
 }
-void AttitudeState::setYaw(const float value)
+void AttitudeState1::setYaw(const float value)
 {
    mutex->lock();
    bool changed = (data_.Yaw != static_cast<float>(value));
@@ -189,12 +189,12 @@ void AttitudeState::setYaw(const float value)
    if (changed) { emit yawChanged(value); }
 }
 
-float AttitudeState::navYaw() const
+float AttitudeState1::navYaw() const
 {
    QMutexLocker locker(mutex);
    return static_cast<float>(data_.NavYaw);
 }
-void AttitudeState::setNavYaw(const float value)
+void AttitudeState1::setNavYaw(const float value)
 {
    mutex->lock();
    bool changed = (data_.NavYaw != static_cast<float>(value));
