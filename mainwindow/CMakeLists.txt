@@ -9,7 +9,7 @@ include_directories(${PROJECT_SOURCE_DIR}/connectionmanager
   ${PROJECT_SOURCE_DIR}/quickwidgetproxy
   ${PROJECT_SOURCE_DIR}/svgimageprovider
   ${PROJECT_SOURCE_DIR}/modelqmlcontext
-  ${PROJECT_SOURCE_DIR}/uavobjects
+  ${PROJECT_SOURCE_DIR}/testuavobjects
   )
 link_directories (${PROJECT_BINARY_DIR}/connectionmanager
   ${PROJECT_BINARY_DIR}/welcomemode
@@ -17,10 +17,10 @@ link_directories (${PROJECT_BINARY_DIR}/connectionmanager
   ${PROJECT_BINARY_DIR}/quickwidgetproxy
   ${PROJECT_BINARY_DIR}/svgimageprovider
   ${PROJECT_BINARY_DIR}/modelqmlcontext
-  ${PROJECT_BINARY_DIR}/uavobjects
+  ${PROJECT_BINARY_DIR}/testuavobjects
   )
 
 target_link_libraries(mainwindow connectionmanager welcomemode
-  GCSOsgEarth quickwidgetproxy svgimageprovider modelqmlcontext uavobjects)
+  GCSOsgEarth quickwidgetproxy svgimageprovider modelqmlcontext testuavobjects)
 
 qt5_use_modules(mainwindow Widgets Core)
