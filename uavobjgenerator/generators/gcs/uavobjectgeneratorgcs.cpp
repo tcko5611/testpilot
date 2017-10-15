@@ -551,7 +551,8 @@ void generateProperty(Context &ctxt, FieldContext &fieldCtxt)
 
 bool UAVObjectGeneratorGCS::generate(UAVObjectParser *parser, QString templatepath, QString outputpath)
 {
-    gcsCodePath        = QDir(templatepath + QString(GCS_CODE_DIR));
+  //  gcsCodePath        = QDir(templatepath + QString(GCS_CODE_DIR));
+  gcsCodePath        = QDir(templatepath);
     gcsOutputPath      = QDir(outputpath);
     gcsOutputPath.mkpath(gcsOutputPath.absolutePath());
 
@@ -576,7 +577,7 @@ bool UAVObjectGeneratorGCS::generate(UAVObjectParser *parser, QString templatepa
 
         objInc.append(QString("#include \"%1.h\"\n").arg(object->namelc));
 
-        gcsObjInit += ::generate(ctxt, "    objMngr->registerObject( new :ClassName() );\n");
+        gcsObjInit += ::generate(ctxt, "    s.registerObject( new :ClassName() );\n");
         gcsObjInit += ::generate(ctxt, "    :ClassName::registerQMLTypes();\n");
     }
 

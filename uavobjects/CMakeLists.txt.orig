@@ -1,0 +1,30 @@
+find_package(Qt5Core)
+find_package(Qt5Qml)
+set(CMAKE_AUTOMOC OFF)
+set(UAVObjectsInit "${CMAKE_CURRENT_BINARY_DIR}/uavobjectsinit.cpp")
+# define generate xml files
+set(accelgyrosettings "${CMAKE_CURRENT_BINARY_DIR}/accelgyrosettings.cpp")
+set(accelgyrosettingsH "${CMAKE_CURRENT_BINARY_DIR}/accelgyrosettings.h")
+set(accelsensor "${CMAKE_CURRENT_BINARY_DIR}/accelsensor.cpp")
+set(accelsensorH "${CMAKE_CURRENT_BINARY_DIR}/accelsensor.h")
+set(AttitudeState "${CMAKE_CURRENT_BINARY_DIR}/attitudestate.cpp")
+set(AttitudeStateH "${CMAKE_CURRENT_BINARY_DIR}/attitudestate.h")
+set (MyProjectLib_hdr uavobject.h uavdataobject.h uavobjectfield.h
+  uavmetaobject.h uavobjectmanager.h ${AttitudeStateH})
+qt5_wrap_cpp(MyProjectLib_hdr_moc ${MyProjectLib_hdr})
+add_definitions(-DUAVOBJECTS_LIBRARY)
+add_library(uavobjects SHARED uavobject.cpp uavdataobject.cpp 
+  uavobjectfield.cpp uavmetaobject.cpp uavobjectmanager.cpp
+  ${UAVObjectsInit}
+  ${AttitudeState} ${MyProjectLib_hdr_moc})
+add_custom_command(
+	OUTPUT ${AttitudeState}
+	COMMAND ${CMAKE_BINARY_DIR}/bin/uavobjgenerator -gcs ${CMAKE_SOURCE_DIR}/xml/uavobjectdefinition ${CMAKE_CURRENT_SOURCE_DIR} attitudestate
+	WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
+)
+include_directories(${PROJECT_SOURCE_DIR})
+link_directories (${PROJECT_BINARY_DIR}/utils)
+target_link_libraries(uavobjects utils)
+testpilot_library(uavobjects)
+
+qt5_use_modules(uavobjects Core Qml)
