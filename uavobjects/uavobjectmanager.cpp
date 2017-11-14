@@ -30,6 +30,8 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
+UAVObjectManager* UAVObjectManager::instance = 0;
+QMutex UAVObjectManager::smutex;
 /**
  * Constructor
  */

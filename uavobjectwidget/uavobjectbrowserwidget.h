@@ -30,9 +30,10 @@
 #ifndef UAVOBJECTBROWSERWIDGET_H_
 #define UAVOBJECTBROWSERWIDGET_H_
 
+#include "utils_global.h"
 #include "uavobjecttreemodel.h"
 
-#include "objectpersistence.h"
+// #include "objectpersistence.h"
 
 #include <QWidget>
 #include <QSortFilterProxyModel>
@@ -52,7 +53,7 @@ protected:
     bool hasAcceptedChildren(int source_row, const QModelIndex &source_parent) const;
 };
 
-class UAVObjectBrowserWidget : public QWidget {
+class QTCREATOR_UTILS_EXPORT UAVObjectBrowserWidget : public QWidget {
     Q_OBJECT
 
 public:
@@ -102,7 +103,7 @@ private slots:
     void searchLineChanged(QString searchText);
     void searchTextCleared();
     void splitterMoved();
-    QString createObjectDescription(UAVObject *object);
+    // QString createObjectDescription(UAVObject *object);
 
 signals:
     void viewOptionsChanged(bool categorized, bool scientific, bool metadata, bool description);
@@ -120,9 +121,9 @@ private:
     QColor m_recentlyUpdatedColor;
     QColor m_manuallyChangedColor;
     bool m_onlyHilightChangedValues;
-    QString m_mustacheTemplate;
+    // QString m_mustacheTemplate;
 
-    void updateObjectPersistance(ObjectPersistence::OperationOptions op, UAVObject *obj);
+    // void updateObjectPersistance(ObjectPersistence::OperationOptions op, UAVObject *obj);
     void enableSendRequest(bool enable);
     void updateDescription();
     ObjectTreeItem *findCurrentObjectTreeItem();

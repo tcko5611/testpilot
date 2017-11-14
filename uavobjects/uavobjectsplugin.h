@@ -29,22 +29,22 @@
 #define UAVOBJECTSPLUGIN_H
 
 #include "uavobjects_global.h"
-#include <extensionsystem/iplugin.h>
-
 #include <QtPlugin>
 
-class UAVOBJECTS_EXPORT UAVObjectsPlugin :
-    public ExtensionSystem::IPlugin {
-    Q_OBJECT
-                        Q_PLUGIN_METADATA(IID "OpenPilot.UAVObjects")
+class UAVOBJECTS_EXPORT UAVObjectsPlugin : public QObject
+{
+	Q_OBJECT
+	// Q_PLUGIN_METADATA(IID "OpenPilot.UAVObjects")
 
 public:
-    UAVObjectsPlugin();
-    ~UAVObjectsPlugin();
+	UAVObjectsPlugin();
+	~UAVObjectsPlugin();
 
-    void extensionsInitialized();
-    bool initialize(const QStringList & arguments, QString *errorString);
-    void shutdown();
+	static bool initialize();
+
 };
 
 #endif // UAVOBJECTSPLUGIN_H
+// Local variables:
+// mode: c++
+// End:

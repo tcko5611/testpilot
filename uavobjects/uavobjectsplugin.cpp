@@ -35,22 +35,13 @@ UAVObjectsPlugin::UAVObjectsPlugin()
 UAVObjectsPlugin::~UAVObjectsPlugin()
 {}
 
-void UAVObjectsPlugin::extensionsInitialized()
-{}
-
-bool UAVObjectsPlugin::initialize(const QStringList & arguments, QString *errorString)
+bool UAVObjectsPlugin::initialize()
 {
-    // Create object manager and expose object
-    UAVObjectManager *objMngr = new UAVObjectManager();
+	// Create object manager and expose object
+	UAVObjectManager *objMngr = &UAVObjectManager::getInstance();
 
-    addAutoReleasedObject(objMngr);
-    // Initialize UAVObjects
-    UAVObjectsInitialize(objMngr);
-    // Done
-    Q_UNUSED(arguments);
-    Q_UNUSED(errorString);
-    return true;
+	// Initialize UAVObjects
+	UAVObjectsInitialize();
+	// Done
+	return true;
 }
-
-void UAVObjectsPlugin::shutdown()
-{}

@@ -6,6 +6,9 @@
 #include "welcomemode.h"
 #include "svgimageprovider.h"
 #include "attitudestate1.h"
+#include "uavobjectbrowserwidget.h"
+#include "opmapgadgetwidget.h"
+#include "uavobjectsplugin.h"
 #include <iostream>
 #include <QFileInfo>
 #include <qstylefactory.h>
@@ -42,7 +45,7 @@ MainWindow::MainWindow() :
   setWindowTitle(QLatin1String("TestPilot") + " " + "1.0");
   qApp->setWindowIcon(QIcon(":/images/librepilot_logo_128.png"));
   qApp->setStyle(QStyleFactory::create("Fusion"));
-  
+
   setDockNestingEnabled(true);
 
   setCorner(Qt::BottomLeftCorner, Qt::LeftDockWidgetArea);
@@ -50,7 +53,8 @@ MainWindow::MainWindow() :
 
   createActions();
   createMenus();
- 
+  UAVObjectsPlugin::initialize();
+
   tabWidget = new QTabWidget(this);
   tabWidget->setIconSize(QSize(24, 24));
   tabWidget->setTabPosition(QTabWidget::South);
@@ -63,15 +67,22 @@ MainWindow::MainWindow() :
   // create welcome mode
   welcomeMode = new WelcomeMode();
   tabWidget->addTab(welcomeMode->widget(), welcomeMode->icon(), welcomeMode->name());
-  
+
   // create pfd mode
   createPfdQmlWidget();
   tabWidget->addTab(pfdQmlWidget->widget(), welcomeMode->icon(), "Pfd");
-  
-  //create model mode 
+
+  //create model mode
   OsgEarth::registerQmlTypes();
   createModelQmlWidget();
   tabWidget->addTab(modelQmlWidget->widget(), welcomeMode->icon(), "Model");
+
+  //create uavobject widget
+  uavObjectBrowserWidget = new UAVObjectBrowserWidget(this);
+  tabWidget->addTab(uavObjectBrowserWidget, welcomeMode->icon(), "UAVObject");
+  // create opmap widget
+  opmapGadgetWidget = new OPMapGadgetWidget(this);
+  tabWidget->addTab(opmapGadgetWidget, welcomeMode->icon(), "opmap");
 
   QPushButton *attitudeButton = new QPushButton("attitude", this);
   connect(attitudeButton, SIGNAL (released()), this, SLOT (handleButton()));
@@ -86,7 +97,7 @@ MainWindow::MainWindow() :
   hboxLayout->addWidget(pitchLabel);
   hboxLayout->addWidget(rollLabel);
   hboxLayout->addWidget(yawLabel);
-  
+
   QVBoxLayout *vboxLayout = new QVBoxLayout();
   vboxLayout->addWidget(tabWidget);
   vboxLayout->addLayout(hboxLayout);
@@ -143,7 +154,7 @@ void MainWindow::createModelQmlWidget()
 {
   modelQmlWidget = new QuickWidgetProxy();
   ModelQmlContext *modelQmlContext = new ModelQmlContext();
-  
+
   QFileInfo check_file("./share/backgrounds/default_background.png");
   //modelQmlContext->setBackgroundImageFile("D:/msys64/home/DELL/qt/build-testpilot-Desktop_Qt_MinGW_w64_64bit_MSYS2-Debug/app/share/backgrounds/default_background.png");
   modelQmlContext->setBackgroundImageFile(check_file.absoluteFilePath());

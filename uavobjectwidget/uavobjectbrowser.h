@@ -28,11 +28,10 @@
 #ifndef UAVOBJECTBROWSER_H_
 #define UAVOBJECTBROWSER_H_
 
-#include <coreplugin/iuavgadget.h>
 #include "uavobjectbrowserwidget.h"
-#include "uavobjectbrowserconfiguration.h"
+// #include "uavobjectbrowserconfiguration.h"
 
-class IUAVGadget;
+// class IUAVGadget;
 class QWidget;
 class QString;
 class UAVObjectBrowserWidget;

@@ -15,8 +15,13 @@ class UAVOBJECTS_EXPORT UAVObjectManager : public QObject {
  public:
   // sigleton pattern
   static UAVObjectManager& getInstance() {
-    static UAVObjectManager instance;
-    return instance;
+    if (instance == NULL) {
+      QMutexLocker locker(&smutex);
+      if (instance == NULL) {
+	instance = new UAVObjectManager();
+      }
+    }
+    return *instance;
   }
  private:
   UAVObjectManager();
@@ -25,7 +30,7 @@ class UAVOBJECTS_EXPORT UAVObjectManager : public QObject {
   void operator=(UAVObjectManager const &);
  public:
   enum JSON_EXPORT_OPTION { JSON_EXPORT_ALL, JSON_EXPORT_METADATA, JSON_EXPORT_SETTINGS, JSON_EXPORT_DATA };
-  
+
   bool registerObject(UAVDataObject *obj);
   QList< QList<UAVObject *> > getObjects();
   QList< QList<UAVDataObject *> > getDataObjects();
@@ -36,26 +41,28 @@ class UAVOBJECTS_EXPORT UAVObjectManager : public QObject {
   QList<UAVObject *> getObjectInstances(quint32 objId);
   qint32 getNumInstances(const QString & name);
   qint32 getNumInstances(quint32 objId);
-  
+
   void toJson(QJsonObject &jsonObject, JSON_EXPORT_OPTION what = JSON_EXPORT_ALL);
   void toJson(QJsonObject &jsonObject, const QList<QString> &objectsToExport);
   void toJson(QJsonObject &jsonObject, const QList<UAVObject *> &objectsToExport);
   void fromJson(const QJsonObject &jsonObject, QList<UAVObject *> *updatedObjects = NULL);
-  
+
  signals:
   void newObject(UAVObject *obj);
   void newInstance(UAVObject *obj);
-  
+
  private:
   static const quint32 MAX_INSTANCES = 1000;
-  
+
   QList< QList<UAVObject *> > objects;
   QMutex *mutex;
-  
+
   void addObject(UAVObject *obj);
   UAVObject *getObject(const QString *name, quint32 objId, quint32 instId);
   QList<UAVObject *> getObjectInstances(const QString *name, quint32 objId);
   qint32 getNumInstances(const QString *name, quint32 objId);
+  static UAVObjectManager *instance;
+  static QMutex smutex;
 };
 
 

@@ -203,7 +203,7 @@
   <customwidget>
    <class>Utils::QtColorButton</class>
    <extends>QToolButton</extends>
-   <header>utils/qtcolorbutton.h</header>
+   <header>qtcolorbutton.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

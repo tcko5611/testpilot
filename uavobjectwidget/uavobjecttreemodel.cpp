@@ -31,7 +31,7 @@
 #include "uavdataobject.h"
 #include "uavmetaobject.h"
 #include "uavobjectfield.h"
-#include "extensionsystem/pluginmanager.h"
+// #include "extensionsystem/pluginmanager.h"
 #include <QColor>
 #include <QtCore/QTimer>
 #include <QtCore/QSignalMapper>
@@ -47,8 +47,7 @@ UAVObjectTreeModel::UAVObjectTreeModel(QObject *parent, bool categorize, bool sh
     m_manuallyChangedColor(QColor(230, 230, 255)),
     m_unknownObjectColor(QColor(Qt::gray))
 {
-    ExtensionSystem::PluginManager *pm = ExtensionSystem::PluginManager::instance();
-    UAVObjectManager *objManager = pm->getObject<UAVObjectManager>();
+  UAVObjectManager *objManager = &UAVObjectManager::getInstance();
 
     Q_ASSERT(objManager);
 

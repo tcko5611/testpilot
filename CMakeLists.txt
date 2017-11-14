@@ -4,12 +4,15 @@ project(testPilot CXX)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
+set(CMAKE_AUTOUIC ON)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
 include(testPilotFunctions)
 
 add_subdirectory(utils)
 add_subdirectory(uavobjgenerator)
+add_subdirectory(uavobjectwidget)
+add_subdirectory(opmap)
 add_subdirectory(connectionmanager)
 add_subdirectory(modelqmlcontext)
 add_subdirectory(quickwidgetproxy)
@@ -20,5 +23,4 @@ add_subdirectory(osgearth)
 add_subdirectory(welcomemode)
 add_subdirectory(mainwindow)
 add_subdirectory(app)
-
-
+# add_subdirectory(test1)

@@ -35,12 +35,13 @@
 #include "browseritemdelegate.h"
 #include "treeitem.h"
 #include "uavobjectmanager.h"
-#include "extensionsystem/pluginmanager.h"
-#include "utils/mustache.h"
+// #include "extensionsystem/pluginmanager.h"
+// #include "utils/mustache.h"
 
 #include <QDebug>
 
-UAVObjectBrowserWidget::UAVObjectBrowserWidget(QWidget *parent) : QWidget(parent)
+UAVObjectBrowserWidget::UAVObjectBrowserWidget(QWidget *parent)
+  : QWidget(parent)
 {
     m_viewoptionsDialog = new QDialog(this);
 
@@ -65,7 +66,7 @@ UAVObjectBrowserWidget::UAVObjectBrowserWidget(QWidget *parent) : QWidget(parent
     m_browser->treeView->setEditTriggers(QAbstractItemView::AllEditTriggers);
     m_browser->treeView->setSelectionBehavior(QAbstractItemView::SelectItems);
 
-    m_mustacheTemplate = loadFileIntoString(QString(":/uavobjectbrowser/resources/uavodescription.mustache"));
+    //    m_mustacheTemplate = loadFileIntoString(QString(":/uavobjectbrowser/resources/uavodescription.mustache"));
 
     showDescription(m_viewoptions->cbDescription->isChecked());
 
@@ -186,7 +187,7 @@ void UAVObjectBrowserWidget::saveObject()
     if (objItem != NULL) {
         UAVObject *obj = objItem->object();
         Q_ASSERT(obj);
-        updateObjectPersistance(ObjectPersistence::OPERATION_SAVE, obj);
+	// updateObjectPersistance(ObjectPersistence::OPERATION_SAVE, obj);
     }
 }
 
@@ -198,7 +199,7 @@ void UAVObjectBrowserWidget::loadObject()
     if (objItem != NULL) {
         UAVObject *obj = objItem->object();
         Q_ASSERT(obj);
-        updateObjectPersistance(ObjectPersistence::OPERATION_LOAD, obj);
+	// updateObjectPersistance(ObjectPersistence::OPERATION_LOAD, obj);
         // Retrieve object so that latest value is displayed
         requestUpdate();
     }
@@ -211,16 +212,17 @@ void UAVObjectBrowserWidget::eraseObject()
     if (objItem != NULL) {
         UAVObject *obj = objItem->object();
         Q_ASSERT(obj);
-        updateObjectPersistance(ObjectPersistence::OPERATION_DELETE, obj);
+	// updateObjectPersistance(ObjectPersistence::OPERATION_DELETE, obj);
         // Retrieve object so that correct default value is displayed
         requestUpdate();
     }
 }
 
+/*
 void UAVObjectBrowserWidget::updateObjectPersistance(ObjectPersistence::OperationOptions op, UAVObject *obj)
 {
-    ExtensionSystem::PluginManager *pm = ExtensionSystem::PluginManager::instance();
-    UAVObjectManager *objManager = pm->getObject<UAVObjectManager>();
+	// ExtensionSystem::PluginManager *pm = ExtensionSystem::PluginManager::instance();
+	UAVObjectManager *objManager = &UAVObjectManager::getInstance();
     ObjectPersistence *objper    = dynamic_cast<ObjectPersistence *>(objManager->getObject(ObjectPersistence::NAME));
 
     if (obj != NULL) {
@@ -233,6 +235,7 @@ void UAVObjectBrowserWidget::updateObjectPersistance(ObjectPersistence::Operatio
         objper->updated();
     }
 }
+*/
 
 void UAVObjectBrowserWidget::currentChanged(const QModelIndex &current, const QModelIndex &previous)
 {
@@ -298,7 +301,7 @@ void UAVObjectBrowserWidget::splitterMoved()
 {
     emit splitterChanged(m_browser->splitter->saveState());
 }
-
+/*
 QString UAVObjectBrowserWidget::createObjectDescription(UAVObject *object)
 {
     QString mustache(m_mustacheTemplate);
@@ -379,6 +382,7 @@ QString UAVObjectBrowserWidget::createObjectDescription(UAVObject *object)
     Mustache::Renderer renderer;
     return renderer.render(mustache, &context);
 }
+*/
 
 void UAVObjectBrowserWidget::enableSendRequest(bool enable)
 {
@@ -396,7 +400,7 @@ void UAVObjectBrowserWidget::updateDescription()
     if (objItem) {
         UAVObject *obj = objItem->object();
         if (obj) {
-            m_browser->descriptionText->setText(createObjectDescription(obj));
+	  // m_browser->descriptionText->setText(createObjectDescription(obj));
             return;
         }
     }

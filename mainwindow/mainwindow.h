@@ -16,6 +16,8 @@ class WelcomeMode;
 class QuickWidgetProxy;
 class AttitudeState1;
 class QLabel;
+class UAVObjectBrowserWidget;
+class OPMapGadgetWidget;
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
@@ -206,6 +208,8 @@ class MainWindow : public QMainWindow {
     QuickWidgetProxy *pfdQmlWidget;
     QuickWidgetProxy *modelQmlWidget;
     AttitudeState1 *attitudeState1;
+    UAVObjectBrowserWidget *uavObjectBrowserWidget;
+    OPMapGadgetWidget *opmapGadgetWidget;
     QLabel *pitchLabel;
     QLabel *rollLabel;
     QLabel *yawLabel;

@@ -28,14 +28,14 @@
 #ifndef UAVOBJECTBROWSEROPTIONSPAGE_H
 #define UAVOBJECTBROWSEROPTIONSPAGE_H
 
-#include "coreplugin/dialogs/ioptionspage.h"
+#include "ioptionspage.h"
 #include <QColor>
-#include <utils/qtcolorbutton.h>
+#include "qtcolorbutton.h"
 
 
-namespace Core {
-class IUAVGadgetConfiguration;
-}
+// namespace Core {
+// class IUAVGadgetConfiguration;
+// }
 class UAVObjectBrowserConfiguration;
 class QLabel;
 class QPushButton;
@@ -60,8 +60,8 @@ signals:
 
 private slots:
 private:
-    UAVObjectBrowserConfiguration *m_config;
-    Ui::UAVObjectBrowserOptionsPage *m_page;
+	// UAVObjectBrowserConfiguration *m_config;
+	Ui::UAVObjectBrowserOptionsPage *m_page;
 };
 
 #endif // UAVOBJECTBROWSEROPTIONSPAGE_H

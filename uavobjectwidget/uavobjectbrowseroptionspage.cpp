@@ -25,8 +25,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-#include "uavobjectbrowseroptionspage.h"
-#include "uavobjectbrowserconfiguration.h"
+// #include "uavobjectbrowseroptionspage.h"
+// #include "uavobjectbrowserconfiguration.h"
 #include <QLabel>
 #include <QSpinBox>
 #include <QPushButton>
@@ -34,12 +34,12 @@
 #include <QVBoxLayout>
 #include <QColorDialog>
 
+#include "uavobjectbrowseroptionspage.h"
 #include "ui_uavobjectbrowseroptionspage.h"
 
-
 UAVObjectBrowserOptionsPage::UAVObjectBrowserOptionsPage(UAVObjectBrowserConfiguration *config, QObject *parent) :
-    IOptionsPage(parent),
-    m_config(config)
+    IOptionsPage(parent)
+		//, m_config(config)
 {}
 
 QWidget *UAVObjectBrowserOptionsPage::createPage(QWidget *parent)
@@ -48,22 +48,22 @@ QWidget *UAVObjectBrowserOptionsPage::createPage(QWidget *parent)
     QWidget *w = new QWidget(parent);
     m_page->setupUi(w);
 
-    m_page->recentlyUpdatedButton->setColor(m_config->recentlyUpdatedColor());
-    m_page->manuallyChangedButton->setColor(m_config->manuallyChangedColor());
-    m_page->unknownButton->setColor(m_config->unknownObjectColor());
-    m_page->recentlyUpdatedTimeoutSpinBox->setValue(m_config->recentlyUpdatedTimeout());
-    m_page->hilightBox->setChecked(m_config->onlyHighlightChangedValues());
+		// m_page->recentlyUpdatedButton->setColor(m_config->recentlyUpdatedColor());
+		// m_page->manuallyChangedButton->setColor(m_config->manuallyChangedColor());
+		// m_page->unknownButton->setColor(m_config->unknownObjectColor());
+    // m_page->recentlyUpdatedTimeoutSpinBox->setValue(m_config->recentlyUpdatedTimeout());
+    // m_page->hilightBox->setChecked(m_config->onlyHighlightChangedValues());
 
     return w;
 }
 
 void UAVObjectBrowserOptionsPage::apply()
 {
-    m_config->setUnknownObjectColor(m_page->unknownButton->color());
-    m_config->setRecentlyUpdatedColor(m_page->recentlyUpdatedButton->color());
-    m_config->setManuallyChangedColor(m_page->manuallyChangedButton->color());
-    m_config->setRecentlyUpdatedTimeout(m_page->recentlyUpdatedTimeoutSpinBox->value());
-    m_config->setOnlyHighlightChangedValues(m_page->hilightBox->isChecked());
+	// m_config->setUnknownObjectColor(m_page->unknownButton->color());
+  //  m_config->setRecentlyUpdatedColor(m_page->recentlyUpdatedButton->color());
+  //  m_config->setManuallyChangedColor(m_page->manuallyChangedButton->color());
+  //  m_config->setRecentlyUpdatedTimeout(m_page->recentlyUpdatedTimeoutSpinBox->value());
+  //  m_config->setOnlyHighlightChangedValues(m_page->hilightBox->isChecked());
 }
 
 void UAVObjectBrowserOptionsPage::finish()

@@ -33,7 +33,7 @@
 #include <QWidget>
 #include <QSpinBox>
 #include <QDoubleSpinBox>
-#include <qscispinbox/QScienceSpinBox.h>
+#include "QScienceSpinBox.h"
 #include <QComboBox>
 #include <limits>
 
