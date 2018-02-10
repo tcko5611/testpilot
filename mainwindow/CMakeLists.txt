@@ -1,7 +1,7 @@
 find_package(Qt5Widgets)
 find_package(Qt5Core)
 add_library (mainwindow SHARED mainwindow.cpp mainwindow.qrc)
-testpilot_library(mainwindow)
+#testpilot_library(mainwindow)
 
 include_directories(${PROJECT_SOURCE_DIR}/connectionmanager
   ${PROJECT_SOURCE_DIR}/welcomemode

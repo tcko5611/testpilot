@@ -21,7 +21,7 @@ add_library(opmap SHARED flightdatamodel.cpp opmapgadgetwidget.cpp
 #   opmap.qrc)
 
 
-testpilot_library(opmap)
+#testpilot_library(opmap)
 include_directories(${PROJECT_SOURCE_DIR}/uavobjects
   ${PROJECT_BINARY_DIR}/uavobjects
   ${PROJECT_SOURCE_DIR}/opmap/opmapcontrol/src/internals)

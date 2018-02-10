@@ -1,0 +1,10 @@
+find_package(Qt5Core)
+
+add_definitions(-DICONNECTION_LIBRARY)
+add_library(iconnection SHARED iconnection.cpp)
+add_subdirectory(serialconnection)
+add_subdirectory(ophid)
+include_directories(${PROJECT_SOURCE_DIR}/utils)
+#link_directories(${PROJECT_BINARY_DIR}/uavobjects)
+target_link_libraries (iconnection utils)
+qt5_use_modules(iconnection Core)

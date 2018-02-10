@@ -32,120 +32,119 @@
 #include <QStandardPaths>
 
 namespace Utils {
-/**
-   Returns the base path of the share directory.
-
-   Path is in Qt/Unix conventions, separated by "/".
- */
-QString GetDataPath()
-{
+  /**
+     Returns the base path of the share directory.
+     Path is in Qt/Unix conventions, separated by "/".
+  */
+  QString GetDataPath()
+  {
     QString dataPath = QApplication::applicationDirPath();
-
+    
     dataPath += QLatin1Char('/');
     dataPath += QLatin1String(DATA_REL_PATH);
-
+    
     return QDir::cleanPath(dataPath) + QLatin1Char('/');
-}
-
-/**
-   Cuts the standard data path from the 'path' argument. If path does not start
-   with the standard data path, then do nothing.
-
-   Always returns a path converted to "/".
- */
-QString RemoveDataPath(QString path)
-{
+  }
+  
+  /**
+     Cuts the standard data path from the 'path' argument. If path does not start
+     with the standard data path, then do nothing.
+     
+     Always returns a path converted to "/".
+  */
+  QString RemoveDataPath(QString path)
+  {
     // Depending on the platform, we might get either "/" or "\"
     // so we need to go to the standard ("/")
     QString goodPath = QDir::fromNativeSeparators(path);
-
+    
     if (goodPath.startsWith(GetDataPath())) {
-        int i = goodPath.length() - GetDataPath().length();
-        return QString("%%DATAPATH%%") + goodPath.right(i);
+      int i = goodPath.length() - GetDataPath().length();
+      return QString("%%DATAPATH%%") + goodPath.right(i);
     } else {
-        return goodPath;
+      return goodPath;
     }
-}
-
-/**
-   Inserts the data path (only if the path starts with %%DATAPATH%%)
-
-   Returns a "/" or "\" separated path depending on platform conventions.
- */
-QString InsertDataPath(QString path)
-{
+  }
+  
+  /**
+     Inserts the data path (only if the path starts with %%DATAPATH%%)
+     
+     Returns a "/" or "\" separated path depending on platform conventions.
+  */
+  QString InsertDataPath(QString path)
+  {
     if (path.startsWith(QString("%%DATAPATH%%"))) {
-        QString newPath = GetDataPath();
-        newPath += path.right(path.length() - 12);
-        return QDir::toNativeSeparators(newPath);
+      QString newPath = GetDataPath();
+      newPath += path.right(path.length() - 12);
+      return QDir::toNativeSeparators(newPath);
     }
     return QDir::toNativeSeparators(path);
-}
-
-/**
-   Gets a standard user-writable location for the system
- */
-QString GetStoragePath()
-{
+  }
+  
+  /**
+     Gets a standard user-writable location for the system
+  */
+  QString GetStoragePath()
+  {
     return QStandardPaths::writableLocation(QStandardPaths::CacheLocation) + QLatin1Char('/');
-}
-
-/**
-   Removes the standard storage path and replace with a tag
- */
-QString RemoveStoragePath(QString path)
-{
+  }
+  
+  /**
+     Removes the standard storage path and replace with a tag
+  */
+  QString RemoveStoragePath(QString path)
+  {
     // Depending on the platform, we might get either "/" or "\"
     // so we need to go to the standard ("/")
     QString goodPath = QDir::fromNativeSeparators(path);
-
+    
     if (goodPath.startsWith(GetStoragePath())) {
-        int i = goodPath.length() - GetStoragePath().length();
-        return QString("%%STOREPATH%%") + goodPath.right(i);
+      int i = goodPath.length() - GetStoragePath().length();
+      return QString("%%STOREPATH%%") + goodPath.right(i);
     } else {
-        return goodPath;
+      return goodPath;
     }
-}
-
-/**
-   Inserts the standard storage path is there is a storage path tag
- */
-QString InsertStoragePath(QString path)
-{
+  }
+  
+  /**
+     Inserts the standard storage path is there is a storage path tag
+  */
+  QString InsertStoragePath(QString path)
+  {
     if (path.startsWith(QString("%%STOREPATH%%"))) {
-        QString newPath = GetStoragePath();
-        newPath += path.right(path.length() - 13);
-        return QDir::toNativeSeparators(newPath);
+      QString newPath = GetStoragePath();
+      newPath += path.right(path.length() - 13);
+      return QDir::toNativeSeparators(newPath);
     }
     return QDir::toNativeSeparators(path);
-}
-
-/**
-   Returns the base path of the library directory.
-
-   Path is in Qt/Unix conventions, separated by "/".
- */
-QString GetLibraryPath()
-{
+  }
+  
+  /**
+     Returns the base path of the library directory.
+     
+     Path is in Qt/Unix conventions, separated by "/".
+  */
+  QString GetLibraryPath()
+  {
     QString libPath = QApplication::applicationDirPath();
-
+    
     libPath += QLatin1Char('/');
     libPath += QLatin1String(LIB_REL_PATH);
-
+    
     return QDir::cleanPath(libPath) + QLatin1Char('/');
-}
-
-QStringList GetPluginPaths()
-{
+  }
+  
+  QStringList GetPluginPaths()
+  {
     QStringList rc;
-
+    
     QString pluginPath = QApplication::applicationDirPath();
-
+    
     pluginPath += QLatin1Char('/');
     pluginPath += QLatin1String(PLUGIN_REL_PATH);
-
+    
     rc.push_back(QDir::cleanPath(pluginPath));
-
+    
     return rc;
-}
+  }
 }

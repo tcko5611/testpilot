@@ -38,6 +38,9 @@
 #include <QVBoxLayout>
 #include <QThreadPool>
 
+MainWindow *MainWindow::instance = 0;
+QMutex MainWindow::smutex;
+
 MainWindow::MainWindow() :
     QMainWindow()
 {
@@ -112,7 +115,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::VaryPitch::run() {
   for(int i = 0; i < 360; ++i) {
-      qDebug() << "i: " << i;
+    qDebug() << "i: " << i;
     mainWindow->attitudeState1->setPitch(i);
     mainWindow->pitchLabel->setText(QString::number(i));
     QThread::msleep(100);

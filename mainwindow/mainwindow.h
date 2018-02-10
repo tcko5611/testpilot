@@ -7,23 +7,34 @@
 #include <QTabWidget>
 #include <QDebug>
 #include <QRunnable>
+#include <QMutex>
+#include <QMutexLocker>
 
-class QSettings;
-class QShortcut;
-class QToolButton;
 class ConnectionManager;
 class WelcomeMode;
 class QuickWidgetProxy;
 class AttitudeState1;
-class QLabel;
 class UAVObjectBrowserWidget;
 class OPMapGadgetWidget;
+class QLabel;
+
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
- public:
+public:
+  static MainWindow & getInstance() {
+    if (instance == NULL) {
+      QMutexLocker locker(&smutex);
+      if (instance == NULL){
+	instance = new MainWindow();      
+      }
+    }
+    return *instance;
+  }
+private:
   MainWindow();
   ~MainWindow();
+public:
   class VaryPitch : public QRunnable {
   public:
     VaryPitch (MainWindow *w) {
@@ -213,6 +224,11 @@ class MainWindow : public QMainWindow {
     QLabel *pitchLabel;
     QLabel *rollLabel;
     QLabel *yawLabel;
+  static MainWindow *instance;
+  static QMutex smutex;
 };
 
 #endif // MAINWINDOW_H
+// Local Variables:
+// mode: C++
+// End:

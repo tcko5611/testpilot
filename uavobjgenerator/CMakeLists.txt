@@ -13,5 +13,4 @@ add_executable (uavobjgenerator
   generators/wireshark/uavobjectgeneratorwireshark.cpp
   generators/generator_common.cpp
   )
-testpilot_library(uavobjgenerator)
 qt5_use_modules(uavobjgenerator Xml)

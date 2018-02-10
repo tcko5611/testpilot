@@ -31,7 +31,7 @@ add_library (GCSOsgEarth SHARED
   osgQtQuick/ga/OSGEarthManipulator.cpp 
   osgQtQuick/ga/OSGGeoTransformManipulator.cpp
   )
-testpilot_library(GCSOsgEarth)
+#testpilot_library(GCSOsgEarth)
 
 qt5_use_modules(GCSOsgEarth Widgets Opengl Qml Quick)
 

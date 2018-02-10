@@ -34,17 +34,17 @@
 #include <QStringList>
 
 namespace Utils {
-QTCREATOR_UTILS_EXPORT QString GetDataPath();
-QTCREATOR_UTILS_EXPORT QString RemoveDataPath(QString path);
-QTCREATOR_UTILS_EXPORT QString InsertDataPath(QString path);
-
-QTCREATOR_UTILS_EXPORT QString GetStoragePath();
-QTCREATOR_UTILS_EXPORT QString RemoveStoragePath(QString path);
-QTCREATOR_UTILS_EXPORT QString InsertStoragePath(QString path);
-
-QTCREATOR_UTILS_EXPORT QString GetLibraryPath();
-
-QTCREATOR_UTILS_EXPORT QStringList GetPluginPaths();
+  UTILS_EXPORT QString GetDataPath();
+  UTILS_EXPORT QString RemoveDataPath(QString path);
+  UTILS_EXPORT QString InsertDataPath(QString path);
+  
+  UTILS_EXPORT QString GetStoragePath();
+  UTILS_EXPORT QString RemoveStoragePath(QString path);
+  UTILS_EXPORT QString InsertStoragePath(QString path);
+  
+  UTILS_EXPORT QString GetLibraryPath();
+  
+  UTILS_EXPORT QStringList GetPluginPaths();
 }
 
 #endif /* PATHUTILS_H */

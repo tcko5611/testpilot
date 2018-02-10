@@ -15,7 +15,7 @@ add_library(uavobjectwidget SHARED browseritemdelegate.cpp
 #   uavobjectbrowseroptionspage.ui uavobjectbrowser.ui viewoptions.ui
 #   uavobjectbrowser.qrc)
 
-testpilot_library(uavobjectwidget)
+#testpilot_library(uavobjectwidget)
 
 include_directories(${PROJECT_SOURCE_DIR}/uavobjects
   ${PROJECT_BINARY_DIR}/uavobjects)

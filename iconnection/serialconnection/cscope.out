@@ -1,0 +1,1835 @@
+cscope 15 $HOME/qt/testpilot/iconnection/serialconnection               0000009548
+	@.#serialconfig.cpp
+
+1 
+	gDELL
+@DELL-
+	gPC
+.6256
+
+	@.#serialplugin.h
+
+1 
+	gDELL
+@DELL-
+	gPC
+.6256
+
+	@serial_global.h
+
+29 #iâdeà
+SERIAL_GLOBAL_H
+
+
+30 
+	#SERIAL_GLOBAL_H
+
+
+	)
+
+32 
+	~<QtCÜe/qglob®.h
+>
+
+34 #ià
+defšed
+(
+SERIAL_LIBRARY
+)
+
+35 
+	#SERIAL_EXPORT
+ 
+Q_DECL_EXPORT
+
+
+	)
+
+37 
+	#SERIAL_EXPORT
+ 
+Q_DECL_IMPORT
+
+
+	)
+
+	@serialconfig.cpp
+
+30 
+	~"£rŸlcÚfig.h
+"
+
+32 
+	~"uts/·thuts.h
+"
+
+33 
+	~<cÜ•lugš/icÜe.h
+>
+
+35 
+	~<QDebug
+>
+
+41 
+	gS”ŸlCÚfig
+::
+	$S”ŸlCÚfig
+(
+QSŒšg
+ 
+şassId
+, 
+QObjeù
+ *
+·»Á
+)
+
+42 : 
+	`QObjeù
+(
+·»Á
+), 
+	`m_¥“d
+("57600")
+
+44 
+QS‘tšgs
+ 
+s
+;
+
+45 
+m_¥“d
+ = 
+s
+.
+	`v®ue
+("¥“d", "57600").
+	`toSŒšg
+();
+
+46 ià(
+m_¥“d
+.
+	`isEm±y
+()) {
+
+47 
+m_¥“d
+ = "57600";
+
+49 
+	}
+}
+
+51 
+	gS”ŸlCÚfig
+::~
+	$S”ŸlCÚfig
+()
+
+52 {
+	}
+}
+
+54 
+S”ŸlCÚfig
+::
+	$»¡Üe£‰šgs
+()
+
+56 
+QS‘tšgs
+ 
+s
+;
+
+57 
+s
+.
+	`begšGroup
+(
+	`QL©š1SŒšg
+("SerialConnection"));
+
+58 
+QSŒšg
+ 
+¡r
+ = (
+s
+.
+	`v®ue
+(
+	`QL©š1SŒšg
+("¥“d"), 
+	`Œ
+("")).
+	`toSŒšg
+());
+
+59 ià(
+¡r
+.
+	`isEm±y
+()) {
+
+60 
+m_¥“d
+ = "57600";
+
+62 
+m_¥“d
+ = 
+¡r
+;
+
+64 
+s
+.
+	`’dGroup
+();
+
+65 
+	}
+}
+
+67 
+	gS”ŸlCÚfig
+::
+	$§ve£‰šgs
+() const
+
+69 
+QS‘tšgs
+ 
+s
+;
+
+70 
+s
+.
+	`begšGroup
+(
+	`QL©š1SŒšg
+("SerialConnection"));
+
+71 
+s
+.
+	`£tV®ue
+(
+	`QL©š1SŒšg
+("¥“d"), 
+m_¥“d
+);
+
+72 
+s
+.
+	`’dGroup
+();
+
+73 
+	}
+}
+
+	@serialconfig.h
+
+30 #iâdeà
+SERIALCONFIG_H
+
+
+31 
+	#SERIALCONFIG_H
+
+
+	)
+
+33 
+usšg
+ 
+Çme¥aû
+ 
+	gCÜe
+;
+
+38 şas 
+	cS”ŸlCÚfig
+ : 
+public
+ 
+QObjeù
+ {
+
+39 
+Q_OBJECT
+
+
+40 
+public
+:
+
+41 
+ex¶ic™
+ 
+S”ŸlCÚfig
+(
+QSŒšg
+ 
+şassId
+, 
+QObjeù
+ *
+·»Á
+ = 0);
+
+43 
+	mvœtu®
+ ~
+S”ŸlCÚfig
+();
+
+45 
+	$§ve£‰šgs
+() const;
+
+46 
+	`»¡Üe£‰šgs
+();
+
+48 
+QSŒšg
+ 
+	$¥“d
+()
+
+50  
+m_¥“d
+;
+
+53 
+public
+ 
+¦Ùs
+:
+
+54 
+	$£tS³ed
+(
+QSŒšg
+ 
+¥“d
+)
+
+56 
+m_¥“d
+ = 
+¥“d
+;
+
+57 
+	}
+}
+
+59 
+	g´iv©e
+:
+
+60 
+QSŒšg
+ 
+m_¥“d
+;
+
+	@serialoptionspage.cpp
+
+30 
+	~"£rŸlİtiÚ¥age.h
+"
+
+32 
+	~"ui_£rŸlİtiÚ¥age.h
+"
+
+34 
+	~"£rŸlcÚfig.h
+"
+
+36 
+	gS”ŸlO±iÚsPage
+::
+	$S”ŸlO±iÚsPage
+(
+S”ŸlCÚfig
+ *
+cÚfig
+, 
+QObjeù
+ *
+·»Á
+) :
+
+37 
+	`m_·ge
+(0), 
+	$m_cÚfig
+(
+cÚfig
+)
+
+38 {
+	}
+}
+
+41 
+QWidg‘
+ *
+	gS”ŸlO±iÚsPage
+::
+	$ü—‹Page
+(
+QWidg‘
+ *
+·»Á
+)
+
+43 
+m_·ge
+ = 
+Ãw
+ 
+Ui
+::
+	`S”ŸlO±iÚsPage
+();
+
+44 
+QWidg‘
+ *
+w
+ = 
+Ãw
+ 
+	`QWidg‘
+(
+·»Á
+);
+
+45 
+m_·ge
+->
+	`£tupUi
+(
+w
+);
+
+47 
+QSŒšgLi¡
+ 
+®lowedS³eds
+;
+
+48 
+®lowedS³eds
+ << "1200"
+
+49 #ifdeà
+Q_OS_UNIX
+
+
+55 #ifdeà
+Q_OS_WIN
+
+
+60 #ifdeà
+Q_OS_WIN
+
+
+64 #ifdeà
+Q_OS_UNIX
+
+
+68 #ifdeà
+Q_OS_WIN
+
+
+77 
+m_·ge
+->
+cb_¥“d
+->
+	`addI‹ms
+(
+®lowedS³eds
+);
+
+78 
+m_·ge
+->
+cb_¥“d
+->
+	`£tCu¼’tIndex
+(m_·ge->cb_¥“d->
+	`fšdText
+(
+m_cÚfig
+->
+	`¥“d
+()));
+
+79  
+w
+;
+
+80 
+	}
+}
+
+88 
+	gS”ŸlO±iÚsPage
+::
+	$­¶y
+()
+
+90 
+m_cÚfig
+->
+	`£tS³ed
+(
+m_·ge
+->
+cb_¥“d
+->
+	`cu¼’tText
+());
+
+94 
+em™
+ 
+	`avaabËDevChªged
+();
+
+95 
+	}
+}
+
+98 
+	gS”ŸlO±iÚsPage
+::
+	$fšish
+()
+
+100 
+d–‘e
+ 
+m_·ge
+;
+
+101 
+	}
+}
+
+	@serialoptionspage.h
+
+30 #iâdeà
+SERIALOPTIONSPAGE_H
+
+
+31 
+	#SERIALOPTIONSPAGE_H
+
+
+	)
+
+33 
+	~"cÜ•lugš/dŸlogs/iİtiÚ¥age.h
+"
+
+35 
+	~"QSŒšg
+"
+
+37 
+şass
+ 
+	gS”ŸlCÚfig
+;
+
+39 
+Çme¥aû
+ 
+	gUi
+ {
+
+40 
+şass
+ 
+	gS”ŸlO±iÚsPage
+;
+
+43 
+usšg
+ 
+Çme¥aû
+ 
+	gCÜe
+;
+
+45 şas 
+	cS”ŸlO±iÚsPage
+ : 
+public
+ 
+IO±iÚsPage
+ {
+
+46 
+Q_OBJECT
+
+
+47 
+public
+:
+
+48 
+ex¶ic™
+ 
+S”ŸlO±iÚsPage
+(
+S”ŸlCÚfig
+ *
+cÚfig
+, 
+QObjeù
+ *
+·»Á
+ = 0);
+
+50 
+QSŒšg
+ 
+	$id
+() const
+
+52  
+	`QL©š1SŒšg
+("settings");
+
+54 
+QSŒšg
+ 
+	$ŒName
+() const
+
+56  
+	`Œ
+("settings");
+
+57 
+	}
+}
+
+58 
+QSŒšg
+ 
+	$ÿ‹gÜy
+() const
+
+61 
+	}
+}
+
+62 
+QSŒšg
+ 
+	$ŒC©egÜy
+() const
+
+65 
+	}
+}
+
+66 
+QWidg‘
+ *
+ü—‹Page
+(QWidg‘ *
+·»Á
+);
+
+67 
+­¶y
+();
+
+68 
+fšish
+();
+
+70 
+	gsigÇls
+:
+
+71 
+avaabËDevChªged
+();
+
+73 
+	g´iv©e
+:
+
+74 
+Ui
+::
+S”ŸlO±iÚsPage
+ *
+m_·ge
+;
+
+75 
+S”ŸlCÚfig
+ *
+	gm_cÚfig
+;
+
+	@serialplugin.cpp
+
+29 
+	~"£rŸÍlugš.h
+"
+
+31 
+	~<ex‹nsiÚsy¡em/¶ugšmªag”.h
+>
+
+32 
+	~<cÜ•lugš/icÜe.h
+>
+
+34 
+	~<QDebug
+>
+
+36 
+	gS”ŸlRuÂabË
+::
+	$S”ŸlRuÂabË
+(
+S”ŸlCÚÃùiÚ
+ *
+cÚÃùiÚ
+)
+
+37 : 
+	`m_cÚnûtiÚ
+(
+£rŸl
+), 
+	$m_ruÂšg
+(
+çl£
+)
+
+38 {
+	}
+}
+
+40 
+	gS”ŸlRuÂabe
+::
+	$run
+()
+
+42 
+m_ruÂšg
+ = 
+Œue
+;
+
+43 
+QLi¡
+ <
+QS”ŸlPÜtInfo
+> 
+deviûs
+ = 
+m_cÚÃùiÚ
+->
+	`avaabËPÜts
+();
+
+44 
+m_ruÂšg
+) {
+
+45 ià(!
+m_£rŸl
+->
+	`deviûO³Ãd
+()) {
+
+46 
+QLi¡
+ <
+QS”ŸlPÜtInfo
+> 
+ÃwDev
+ = 
+m_cÚÃùiÚ
+->
+	`avaabËPÜts
+();
+
+47 ià(
+deviûs
+ !ğ
+ÃwDev
+) {
+
+48 
+deviûs
+ = 
+ÃwDev
+;
+
+49 
+em™
+ 
+	`’um”©iÚChªged
+();
+
+53 
+	`m¦“p
+(2000);
+
+55 
+	}
+}
+
+57 
+	gS”ŸlRuÂabË
+::
+	$¡İ
+()
+
+59 ià(!
+m_ruÂšg
+) {
+
+62 
+m_ruÂšg
+ = 
+çl£
+;
+
+64 ià(
+	`wa™
+(2100è=ğ
+çl£
+) {
+
+65 
+	`qDebug
+() << "Cannoterminate SerialRunnable";
+
+67 
+	}
+}
+
+69 
+	gS”ŸlCÚÃùiÚ
+::
+	$S”ŸlCÚÃùiÚ
+(
+S”ŸlCÚfig
+ *
+cÚfig
+) :
+
+70 
+	`m_£rŸlHªdË
+(
+NULL
+),
+
+71 
+	`m_’abËPŞlšg
+(
+Œue
+),
+
+72 
+	`m_ruÂabË
+(
+this
+),
+
+73 
+	`m_deviûO³Ãd
+(
+çl£
+),
+
+74 
+	$m_cÚfig
+(
+cÚfig
+)
+
+76 
+m_İtiÚsPage
+ = 
+Ãw
+ 
+	`S”ŸlO±iÚsPage
+(
+m_cÚfig
+, 
+this
+);
+
+92 
+QObjeù
+::
+	`cÚÃù
+(&
+m_ruÂabË
+, 
+	`SIGNAL
+(
+	`’um”©iÚChªged
+()), 
+this
+, 
+	`SLOT
+(
+	`ÚEnum”©iÚChªged
+()));
+
+93 
+QObjeù
+::
+	`cÚÃù
+(
+m_İtiÚsPage
+, 
+	`SIGNAL
+(
+	`avaabËDevChªged
+()), 
+this
+, 
+	`SLOT
+(
+	`ÚEnum”©iÚChªged
+()));
+
+94 
+QTh»adPoŞ
+::
+	`glob®In¡ªû
+()->
+	`¡¬t
+(&
+m_ruÂabË
+;);
+
+96 
+	}
+}
+
+98 
+	gS”ŸlCÚÃùiÚ
+::~
+	$S”ŸlCÚÃùiÚ
+()
+
+100 
+m_ruÂabË
+.
+	`¡İ
+();
+
+101 
+	}
+}
+
+103 
+	gS”ŸlCÚÃùiÚ
+::
+	$ÚEnum”©iÚChªged
+()
+
+105 ià(
+’abËPŞlšg
+) {
+
+106 
+em™
+ 
+	`avaabËDevChªged
+(
+this
+);
+
+108 
+	}
+}
+
+110 
+boŞ
+ 
+	$sÜtPÜts
+(cÚ¡ 
+QS”ŸlPÜtInfo
+ &
+s1
+, cÚ¡ QS”ŸlPÜtInfØ&
+s2
+)
+
+112  
+s1
+.
+	`pÜtName
+(è< 
+s2
+.portName();
+
+113 
+	}
+}
+
+115 
+	gQLi¡
+<
+	gQS”ŸlPÜtInfo
+> 
+	gS”ŸlCÚÃùiÚ
+::
+	$avaabËPÜts
+()
+
+117 
+QLi¡
+<
+QS”ŸlPÜtInfo
+> 
+pÜts
+ = QS”ŸlPÜtInfo::
+	`avaabËPÜts
+();
+
+118 #ià
+QT_VERSION
+ =ğ0x050301 && 
+	`defšed
+(
+Q_OS_WIN
+)
+
+121 
+QMubËLi¡I‹¿tÜ
+<
+QS”ŸlPÜtInfo
+> 
+	`i
+(
+pÜts
+);
+
+122 
+i
+.
+	`hasNext
+()) {
+
+123 ià(
+i
+.
+	`Ãxt
+().
+	`desütiÚ
+().
+	`isEm±y
+()) {
+
+124 
+i
+.
+	`»move
+();
+
+128  
+pÜts
+;
+
+129 
+	}
+}
+
+132 
+QIODeviû
+ *
+	gS”ŸlCÚÃùiÚ
+::
+	$İ’Deviû
+(cÚ¡ 
+QSŒšg
+ &
+deviûName
+)
+
+134 ià(
+m_£rŸlHªdË
+) {
+
+135 
+	`şo£Deviû
+(
+deviûName
+);
+
+137 
+QLi¡
+<
+QS”ŸlPÜtInfo
+> 
+pÜts
+ = 
+	`avaabËPÜts
+();
+
+138 
+	`fÜ—ch
+(
+QS”ŸlPÜtInfo
+ 
+pÜt
+, 
+pÜts
+) {
+
+139 ià(
+pÜt
+.
+	`pÜtName
+(è=ğ
+deviûName
+) {
+
+142 
+m_£rŸlHªdË
+ = 
+Ãw
+ 
+	`QS”ŸlPÜt
+(
+pÜt
+);
+
+143 
+	`cÚÃù
+(
+m_£rŸlHªdË
+, 
+¡©ic_ÿ¡
+<(
+QS”ŸlPÜt
+::*è(QS”ŸlPÜt::
+S”ŸlPÜtE¼Ü
+)>(&QS”ŸlPÜt::
+”rÜ
+),
+
+144 [ = ](
+QS”ŸlPÜt
+::
+S”ŸlPÜtE¼Ü
+ 
+”rÜ
+è{ 
+	`qW¬nšg
+() << "serial…ortƒrror:" <<ƒrror; }
+
+147 ià(
+m_£rŸlHªdË
+->
+	`İ’
+(
+QIODeviû
+::
+R—dWr™e
+)) {
+
+148 ià(
+m_£rŸlHªdË
+->
+	`£tBaudR©e
+(
+m_cÚfig
+->
+	`¥“d
+().
+	`toIÁ
+())
+
+149 && 
+m_£rŸlHªdË
+->
+	`£tD©aB™s
+(
+QS”ŸlPÜt
+::
+D©a8
+)
+
+150 && 
+m_£rŸlHªdË
+->
+	`£tP¬™y
+(
+QS”ŸlPÜt
+::
+NoP¬™y
+)
+
+151 && 
+m_£rŸlHªdË
+->
+	`£tStİB™s
+(
+QS”ŸlPÜt
+::
+OÃStİ
+)
+
+152 && 
+m_£rŸlHªdË
+->
+	`£tFlowCÚŒŞ
+(
+QS”ŸlPÜt
+::
+NoFlowCÚŒŞ
+)) {
+
+153 
+	`qDebug
+(è<< "S”ŸÈ‹Ëm‘ry„uÂšg‡ˆ" << 
+m_cÚfig
+->
+	`¥“d
+();
+
+154 
+m_deviûO³Ãd
+ = 
+Œue
+;
+
+157 
+m_£rŸlHªdË
+->
+	`£tD©aT”mš®R—dy
+(
+Œue
+);
+
+159  
+m_£rŸlHªdË
+;
+
+162  
+NULL
+;
+
+163 
+	}
+}
+
+165 
+	gS”ŸlCÚÃùiÚ
+::
+	$şo£Deviû
+(cÚ¡ 
+QSŒšg
+ &
+deviûName
+)
+
+167 
+	`Q_UNUSED
+(
+deviûName
+);
+
+169 ià(
+m_£rŸlHªdË
+) {
+
+170 
+m_£rŸlHªdË
+->
+	`d–‘eL©”
+();
+
+171 
+m_£rŸlHªdË
+ = 
+NULL
+;
+
+173 
+m_deviûO³Ãd
+ = 
+çl£
+;
+
+174 
+	}
+}
+
+176 
+QSŒšg
+ 
+	gS”ŸlCÚÃùiÚ
+::
+	$cÚÃùiÚName
+()
+
+178  
+	`QSŒšg
+("Serial…ort");
+
+179 
+	}
+}
+
+181 
+QSŒšg
+ 
+	gS”ŸlCÚÃùiÚ
+::
+	$shÜtName
+()
+
+183  
+	`QSŒšg
+("Serial");
+
+184 
+	}
+}
+
+189 
+	gS”ŸlCÚÃùiÚ
+::
+	$su¥’dPŞlšg
+()
+
+191 
+’abËPŞlšg
+ = 
+çl£
+;
+
+192 
+	}
+}
+
+197 
+	gS”ŸlCÚÃùiÚ
+::
+	$»sumePŞlšg
+()
+
+199 
+’abËPŞlšg
+ = 
+Œue
+;
+
+200 
+	}
+}
+
+202 
+	gS”ŸlPlugš
+::
+	$S”ŸlPlugš
+(è: 
+	$m_cÚÃùiÚ
+(0)
+
+204 
+m_cÚfig
+ = 
+Ãw
+ 
+	`S”ŸlCÚfig
+("S”ŸlCÚÃùiÚ", 
+this
+);
+
+205 
+m_cÚÃùiÚ
+ = 
+Ãw
+ 
+	`S”ŸlCÚÃùiÚ
+(
+m_cÚfig
+, 
+this
+);
+
+206 
+	}
+}
+
+208 
+	gS”ŸlPlugš
+::~
+	$S”ŸlPlugš
+()
+
+211 
+	}
+}
+
+213 
+boŞ
+ 
+S”ŸlPlugš
+::
+	$š™Ÿlize
+(cÚ¡ 
+QSŒšgLi¡
+ &
+¬gum’ts
+, 
+QSŒšg
+ *
+”rÜSŒšg
+)
+
+215 
+	`Q_UNUSED
+(
+¬gum’ts
+);
+
+216 
+	`Q_UNUSED
+(
+”rÜSŒšg
+);
+
+220 
+m_cÚÃùiÚ
+ = 
+Ãw
+ 
+	`S”ŸlCÚÃùiÚ
+(
+m_cÚfig
+);
+
+233  
+Œue
+;
+
+234 
+	}
+}
+
+236 
+	gS”ŸlPlugš
+::
+	$§veCÚfig
+() const
+
+238 
+m_cÚfig
+->
+	`§ve£‰šgs
+(
+£‰šgs
+);
+
+239 
+	}
+}
+
+	@serialplugin.h
+
+29 #iâdeà
+SERIALPLUGIN_H
+
+
+30 
+	#SERIALPLUGIN_H
+
+
+	)
+
+33 
+	~<ex‹nsiÚsy¡em/lugš.h
+>
+
+34 
+	~<cÜ•lugš/icÚfigu¿bË¶ugš.h
+>
+
+35 
+	~"cÜ•lugš/icÚÃùiÚ.h
+"
+
+37 
+	~"£rŸlcÚfig.h
+"
+
+38 
+	~"£rŸlİtiÚ¥age.h
+"
+
+40 
+	~<QtS”ŸlPÜt/QS”ŸlPÜt
+>
+
+41 
+	~<QtS”ŸlPÜt/QS”ŸlPÜtInfo
+>
+
+43 
+	~<QTh»ad
+>
+
+45 
+şass
+ 
+	gICÚÃùiÚ
+;
+
+46 
+şass
+ 
+	gQS”ŸlPÜtInfo
+;
+
+47 
+şass
+ 
+	gS”ŸlCÚÃùiÚ
+;
+
+55 şas 
+	cS”ŸlRuÂabË
+ : 
+public
+ 
+QRuÂabË
+ {
+
+56 
+Q_OBJECT
+
+
+57 
+public
+:
+
+58 
+S”ŸlRuÂabË
+(
+S”ŸlCÚÃùiÚ
+ *
+£rŸl
+);
+
+60 
+vœtu®
+ 
+run
+();
+
+62 
+¡İ
+();
+
+64 
+	msigÇls
+:
+
+65 
+’um”©iÚChªged
+();
+
+67 
+	m´Ùeùed
+:
+
+68 
+S”ŸlCÚÃùiÚ
+ *
+m_cÚÃùiÚ
+;
+
+69 
+boŞ
+ 
+	mm_ruÂšg
+;
+
+78 şas 
+	cS”ŸlCÚÃùiÚ
+ : 
+public
+ 
+QObjeù
+ {
+
+79 
+Q_OBJECT
+
+
+80 
+public
+:
+
+81 
+S”ŸlCÚÃùiÚ
+(
+S”ŸlCÚfig
+ *
+cÚfig
+);
+
+82 ~
+S”ŸlCÚÃùiÚ
+();
+
+84 
+	mQLi¡
+<
+	mQS”ŸlPÜtInfo
+> 
+avaabËPÜts
+();
+
+85 
+QIODeviû
+ *
+İ’Deviû
+(cÚ¡ 
+QSŒšg
+ &
+deviûName
+);
+
+86 
+şo£Deviû
+(cÚ¡ 
+QSŒšg
+ &
+deviûName
+);
+
+88 
+QSŒšg
+ 
+cÚÃùiÚName
+();
+
+89 
+QSŒšg
+ 
+shÜtName
+();
+
+90 
+su¥’dPŞlšg
+();
+
+91 
+»sumePŞlšg
+();
+
+93 
+boŞ
+ 
+	$deviûO³Ãd
+()
+
+95  
+m_deviûO³Ãd
+;
+
+98 
+S”ŸlPlugšO±iÚsPage
+ *
+	$İtiÚsPage
+() const
+
+100  
+m_İtiÚsPage
+;
+
+101 
+	}
+}
+
+103 
+´Ùeùed
+ 
+	g¦Ùs
+:
+
+104 
+ÚEnum”©iÚChªged
+();
+
+107 
+	g´iv©e
+:
+
+108 
+QS”ŸlPÜt
+ *
+m_£rŸlHªdË
+;
+
+109 
+boŞ
+ 
+	gm_’abËPŞlšg
+;
+
+111 
+S”ŸlRuÂabË
+ 
+	gm_ruÂabË
+;
+
+112 
+boŞ
+ 
+	gm_deviûO³Ãd
+;
+
+115 
+S”ŸlCÚfig
+ *
+	gm_cÚfig
+;
+
+116 
+S”ŸlO±iÚsPage
+ *
+	gm_İtiÚsPage
+;
+
+120 şas 
+	cS”ŸlPlugš
+ : 
+public
+ 
+QObjeù
+ {
+
+121 
+Q_OBJECT
+
+
+124 
+public
+:
+
+125 
+S”ŸlPlugš
+();
+
+126 ~
+S”ŸlPlugš
+();
+
+128 
+boŞ
+ 
+š™Ÿlize
+(cÚ¡ 
+QSŒšgLi¡
+ &
+¬gum’ts
+, 
+QSŒšg
+ *
+”rÜ_mes§ge
+);
+
+129 
+ex‹nsiÚsIn™Ÿlized
+();
+
+131 
+»adCÚfig
+(
+QS‘tšgs
+ &
+£‰šgs
+, 
+CÜe
+::
+UAVCÚfigInfo
+ *
+cÚfigInfo
+);
+
+132 
+	$§veCÚfig
+(
+QS‘tšgs
+ &
+£‰šgs
+, 
+CÜe
+::
+UAVCÚfigInfo
+ *
+cÚfigInfo
+) const;
+
+134 
+´iv©e
+:
+
+135 
+S”ŸlCÚÃùiÚ
+ *
+m_cÚÃùiÚ
+;
+
+136 
+S”ŸlCÚfig
+ *
+m_cÚfig
+;
+
+	@
+1
+.
+1
+/usr/include
+9
+158
+.#serialconfig.cpp
+.#serialplugin.h
+serial_global.h
+serialconfig.cpp
+serialconfig.h
+serialoptionspage.cpp
+serialoptionspage.h
+serialplugin.cpp
+serialplugin.h

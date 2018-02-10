@@ -42,9 +42,14 @@ print "add_definitions(-DUAVOBJECTS_LIBRARY)"
 print "add_library(uavobjects SHARED ${MyProjectLib_cpp} ${MyProjectLib_hdr_moc})"
 
 
+
 print "include_directories(${PROJECT_SOURCE_DIR})"
 print "link_directories (${PROJECT_BINARY_DIR}/utils)"
 print "target_link_libraries(uavobjects utils)"
 print "testpilot_library(uavobjects)"
-
 print "qt5_use_modules(uavobjects Core Qml)"
+
+print "add_executable(test_uavobjects main.cpp ${MyProjectLib_cpp} ${MyProjectLib_hdr_moc})"
+print "target_link_libraries(test_uavobjects utils)"
+print "testpilot_library(test_uavobjects)"
+print "qt5_use_modules(test_uavobjects Core Qml)"

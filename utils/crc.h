@@ -32,7 +32,7 @@
 #include "utils_global.h"
 
 namespace Utils {
-class QTCREATOR_UTILS_EXPORT Crc {
+class UTILS_EXPORT Crc {
 public:
     /**
      * Update the crc value with new data.
